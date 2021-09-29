@@ -1,4 +1,5 @@
-import '@/styles/globals.css'
+import '../styles/globals.css'
+import PropTypes from 'prop-types'
 
 function MyApp({ Component, pageProps }) {
     return <Component {...pageProps} />
@@ -7,8 +8,7 @@ function MyApp({ Component, pageProps }) {
 export default MyApp
 
 MyApp.propTypes = {
-    // eslint-disable-next-line react/forbid-prop-types
-    Component: object,
-    // eslint-disable-next-line react/forbid-prop-types
-    pageProps: object
+    Component: PropTypes.func,
+    // eslint-disable-next-line
+    pageProps: PropTypes.array
 }
