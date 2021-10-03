@@ -37,8 +37,8 @@ Layout.defaultProps = {
 Layout.propTypes = {
     title: PropTypes.string,
     // eslint-disable-next-line
-    keywords: PropTypes.array,
+    keywords: PropTypes.string,
     description: PropTypes.string,
     // eslint-disable-next-line
-    children: PropTypes.object
+    children: PropTypes.array
 }
