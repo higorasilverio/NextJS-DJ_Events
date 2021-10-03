@@ -1,5 +1,6 @@
 import Layout from '@/components/Layout'
 import Modal from '@/components/Modal'
+import ImageUpload from '@/components/ImageUpload'
 import moment from 'moment'
 import { FaImage } from 'react-icons/fa'
 import { ToastContainer, toast } from 'react-toastify'
@@ -58,6 +59,13 @@ export default function EditEventPage({evt}) {
     const handleInputChange = (e) => {
         const {name, value} = e.target
         setValues({...values, [name]: value})
+    }
+
+    const imageUploaded = async () => {
+        const res = await fetch(`${API_URL}/events/${evt.id}`)
+        const data = await res.json()
+        setImagePreview(data.image.formats.thumbnail.url)
+        setShowModal(false)
     }
 
     return (
@@ -122,7 +130,7 @@ export default function EditEventPage({evt}) {
               </button>
             </div>
             <Modal show={showModal} onClose={() => setShowModal(false)}>
-              Image Upload
+              <ImageUpload evtId={evt.id} imageUploaded={imageUploaded} />
             </Modal>
         </Layout>
     )
