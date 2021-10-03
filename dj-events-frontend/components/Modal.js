@@ -3,10 +3,25 @@ import { useState, useEffect } from 'react'
 import ReactDOM  from 'react-dom'
 import { FaTimes } from 'react-icons/fa'
 
-export default function Modal({show, onClose, children, title}) {
+export default function Modal({ show, onClose, children, title }) {
   const [isBrowser, setIsBrowser] = useState(false)
 
-  useEffect(() => setIsBrowser(true))
+  const [height, setHeight] = useState(0)
+
+  useEffect(() => {
+    setIsBrowser(true)
+    const body = document.body
+    const html = document.documentElement
+    setHeight(Math.max(
+      body.scrollHeight, 
+      body.offsetHeight, 
+      html.clientHeight, 
+      html.scrollHeight, 
+      html.offsetHeight
+      )
+    )
+    console.log(height)
+  })
 
   const handleClose = (e) => {
     e.preventDefault()
@@ -14,7 +29,7 @@ export default function Modal({show, onClose, children, title}) {
   }
 
   const modalContent = show ? (
-    <div className={styles.overlay}>
+    <div className={styles.overlay} style={{height}}>
       <div className={styles.modal}>
         <div className={styles.header}>
           <a href='#' onClick={handleClose}>

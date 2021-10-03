@@ -4,7 +4,7 @@ import moment from 'moment'
 import { FaImage } from 'react-icons/fa'
 import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import { API_URL } from '@/config/index'
@@ -25,13 +25,12 @@ export default function EditEventPage({evt}) {
     const [imagePreview, setImagePreview] = 
       useState(evt.image ? evt.image.formats.thumbnail.url : null)
 
-    const [showModal, setShowModal] = useState(false)
+    const [showModal, setShowModal] = useState(false);
 
     const router = useRouter()
 
     const handleModal = (bool) => {
       window.scrollTo(0, 0)
-      console.log('work')
       setShowModal(bool)
     }
 
