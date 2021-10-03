@@ -20,7 +20,6 @@ export default function Modal({ show, onClose, children, title }) {
       html.offsetHeight
       )
     )
-    console.log(height)
   })
 
   const handleClose = (e) => {

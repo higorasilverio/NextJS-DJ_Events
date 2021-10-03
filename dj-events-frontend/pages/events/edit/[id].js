@@ -29,11 +29,6 @@ export default function EditEventPage({evt}) {
 
     const router = useRouter()
 
-    const handleModal = (bool) => {
-      window.scrollTo(0, 0)
-      setShowModal(bool)
-    }
-
     const handleSubmit = async (e) => {
         e.preventDefault()
         const hasEmptyFields = Object.values(values).some((element) => element === '')
@@ -122,11 +117,11 @@ export default function EditEventPage({evt}) {
               <div><p>No image uploaded!</p></div>
             )}
             <div>
-              <button onClick={() => handleModal(true)} className="btn-secondary">
+              <button onClick={() => setShowModal(true)} className="btn-secondary">
                   <FaImage /> Set Image
               </button>
             </div>
-            <Modal show={showModal} onClose={() => handleModal(false)}>
+            <Modal show={showModal} onClose={() => setShowModal(false)}>
               Image Upload
             </Modal>
         </Layout>
